@@ -3,219 +3,36 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MEYDEN — Formulaire Client</title>
+<title>MEYDEN — Formulaire Artiste / Entreprise</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
-body{
-background:radial-gradient(circle at top left,rgba(255,90,0,.18),transparent 30%),linear-gradient(180deg,#050505,#121212 55%,#050505);
-font-family:Arial,Helvetica,sans-serif;
-color:white;
-}
-.glass{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.12);
-backdrop-filter:blur(10px);
-}
-.orangeGlow{
-box-shadow:0 0 40px rgba(255,90,0,.18);
-}
-input,textarea,select{
-background:#0c0c0c!important;
-border:1px solid rgba(255,255,255,.12)!important;
-color:white!important;
-}
-input:focus,textarea:focus,select:focus{
-border-color:#ff5a00!important;
-box-shadow:0 0 0 2px rgba(255,90,0,.2)!important;
-outline:none!important;
-}
-.checkboxCard{
-transition:.25s;
-}
-.checkboxCard:hover{
-transform:translateY(-2px);
-border-color:#ff5a00;
-}
+body{background:radial-gradient(circle at top left,rgba(255,90,0,.18),transparent 30%),linear-gradient(180deg,#050505,#121212 55%,#050505);font-family:Arial,Helvetica,sans-serif;color:white}.glass{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)}.orangeGlow{box-shadow:0 0 40px rgba(255,90,0,.18)}input,textarea,select{background:#0c0c0c!important;border:1px solid rgba(255,255,255,.12)!important;color:white!important}input:focus,textarea:focus,select:focus{border-color:#ff5a00!important;box-shadow:0 0 0 2px rgba(255,90,0,.2)!important;outline:none!important}.checkboxCard{transition:.25s}.checkboxCard:hover{transform:translateY(-2px);border-color:#ff5a00}.pdfMode .noPdf{display:none!important}.pdfMode input,.pdfMode textarea,.pdfMode select{border:1px solid rgba(255,255,255,.2)!important}.smallNote{font-size:12px;color:#aaa;line-height:1.5}
 </style>
 </head>
 <body>
-
-<div class="max-w-5xl mx-auto px-4 py-10">
-
-<div class="glass orangeGlow rounded-[30px] p-8 md:p-12 overflow-hidden relative">
-
-<div class="absolute -right-24 -bottom-24 w-72 h-72 border-4 border-orange-500 rotate-45 opacity-20"></div>
-
-<div class="flex items-center gap-5 mb-8 relative z-10">
-<div class="w-20 h-20 bg-orange-500" style="clip-path:polygon(50% 20%,70% 48%,98% 18%,82% 68%,100% 90%,62% 78%,50% 92%,38% 78%,0 90%,18% 68%,2% 18%,30% 48%)"></div>
-<div>
-<p class="uppercase tracking-[6px] text-sm text-gray-300">Mouvement Artistique du Québec</p>
-<h1 class="text-5xl md:text-7xl font-black text-orange-500 leading-none mt-2">MEYDEN</h1>
-</div>
-</div>
-
-<h2 class="text-3xl md:text-5xl font-bold leading-tight max-w-3xl">
-Structurer naturellement l’impact des artistes et des entreprises.
-</h2>
-
-<p class="text-gray-300 text-lg mt-6 max-w-3xl leading-relaxed">
-Formulaire d’entrée officiel permettant à Meyden de mieux comprendre votre projet, vos objectifs et les besoins stratégiques liés à votre image, votre communication et votre développement.
-</p>
-
-</div>
-
-<form class="mt-8 space-y-6">
-
-<div class="glass rounded-[25px] p-6 md:p-8">
-<h3 class="text-orange-500 text-xl font-bold uppercase tracking-wider mb-6">Informations générales</h3>
-
-<div class="grid md:grid-cols-2 gap-5">
-<div>
-<label class="block mb-2 text-sm text-gray-300">Nom complet</label>
-<input type="text" class="w-full rounded-2xl p-4" placeholder="Votre nom" />
-</div>
-
-<div>
-<label class="block mb-2 text-sm text-gray-300">Nom du projet / entreprise / artiste</label>
-<input type="text" class="w-full rounded-2xl p-4" placeholder="Nom officiel" />
-</div>
-
-<div>
-<label class="block mb-2 text-sm text-gray-300">Courriel</label>
-<input type="email" class="w-full rounded-2xl p-4" placeholder="Votre courriel" />
-</div>
-
-<div>
-<label class="block mb-2 text-sm text-gray-300">Téléphone</label>
-<input type="text" class="w-full rounded-2xl p-4" placeholder="Votre téléphone" />
-</div>
-</div>
-</div>
-
-<div class="glass rounded-[25px] p-6 md:p-8">
-<h3 class="text-orange-500 text-xl font-bold uppercase tracking-wider mb-6">Votre projet</h3>
-
-<label class="block mb-2 text-sm text-gray-300">Décrivez votre projet</label>
-<textarea class="w-full rounded-2xl p-4 min-h-[140px]" placeholder="Parlez-nous de votre vision, votre univers, votre entreprise ou votre démarche artistique..."></textarea>
-
-<label class="block mt-6 mb-2 text-sm text-gray-300">Quels sont vos objectifs actuels ?</label>
-<textarea class="w-full rounded-2xl p-4 min-h-[120px]" placeholder="Développement, visibilité, image, contenu, événements, croissance, structuration, etc."></textarea>
-
-<label class="block mt-6 mb-2 text-sm text-gray-300">Quels sont vos principaux défis ?</label>
-<textarea class="w-full rounded-2xl p-4 min-h-[120px]" placeholder="Ce que vous aimeriez améliorer ou clarifier."></textarea>
-</div>
-
-<div class="glass rounded-[25px] p-6 md:p-8">
-<h3 class="text-orange-500 text-xl font-bold uppercase tracking-wider mb-6">Image & communication</h3>
-
-<div class="grid md:grid-cols-2 gap-5">
-<div>
-<label class="block mb-2 text-sm text-gray-300">Avez-vous une identité visuelle ?</label>
-<select class="w-full rounded-2xl p-4">
-<option>Oui</option>
-<option>Partiellement</option>
-<option>Non</option>
-</select>
-</div>
-
-<div>
-<label class="block mb-2 text-sm text-gray-300">Avez-vous un site web ?</label>
-<select class="w-full rounded-2xl p-4">
-<option>Oui</option>
-<option>Non</option>
-</select>
-</div>
-</div>
-
-<label class="block mt-6 mb-2 text-sm text-gray-300">Réseaux sociaux / site web</label>
-<textarea class="w-full rounded-2xl p-4 min-h-[100px]" placeholder="Instagram, Facebook, TikTok, YouTube, site web, etc."></textarea>
-</div>
-
-<div class="glass rounded-[25px] p-6 md:p-8">
-<h3 class="text-orange-500 text-xl font-bold uppercase tracking-wider mb-6">Services recherchés</h3>
-
-<div class="grid md:grid-cols-3 gap-4">
-<label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer">
-<input type="checkbox" class="w-5 h-5">
-<span>Direction artistique</span>
-</label>
-
-<label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer">
-<input type="checkbox" class="w-5 h-5">
-<span>Image de marque</span>
-</label>
-
-<label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer">
-<input type="checkbox" class="w-5 h-5">
-<span>Stratégie</span>
-</label>
-
-<label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer">
-<input type="checkbox" class="w-5 h-5">
-<span>Accompagnement</span>
-</label>
-
-<label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer">
-<input type="checkbox" class="w-5 h-5">
-<span>Visibilité</span>
-</label>
-
-<label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer">
-<input type="checkbox" class="w-5 h-5">
-<span>Contenu</span>
-</label>
-
-<label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer">
-<input type="checkbox" class="w-5 h-5">
-<span>Événementiel</span>
-</label>
-
-<label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer">
-<input type="checkbox" class="w-5 h-5">
-<span>Structuration</span>
-</label>
-
-<label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer">
-<input type="checkbox" class="w-5 h-5">
-<span>Autre</span>
-</label>
-</div>
-</div>
-
-<div class="glass rounded-[25px] p-6 md:p-8 text-center">
-<h3 class="text-2xl font-bold mb-4">Envoyer à Meyden</h3>
-<p class="text-gray-300 max-w-2xl mx-auto leading-relaxed">
-Votre demande sera analysée stratégiquement par Meyden afin d’évaluer les meilleures possibilités de structuration, de développement et d’accompagnement.
-</p>
-
-<div class="flex flex-wrap justify-center gap-4 mt-8">
-<button type="button" onclick="generatePDF()" class="bg-orange-500 hover:bg-orange-400 text-black font-black px-8 py-4 rounded-full transition-all">
-Télécharger PDF
-</button>
-
-<button type="button" onclick="sendEmail()" class="border border-white/20 hover:border-orange-500 hover:bg-orange-500/10 px-8 py-4 rounded-full font-bold transition-all">
-Envoyer à Meyden
-</button>
-</div>
-</div>
-
-</form>
-
-<div class="text-center mt-10 text-gray-500 text-sm tracking-[3px] uppercase">
-MEYDEN — Mouvement Artistique du Québec
-</div>
-
-</div>
-
+<div class="max-w-5xl mx-auto px-4 py-10" id="pdfZone">
+<div class="glass orangeGlow rounded-[30px] p-8 md:p-12 overflow-hidden relative"><div class="absolute -right-24 -bottom-24 w-72 h-72 border-4 border-orange-500 rotate-45 opacity-20"></div><div class="flex items-center gap-5 mb-8 relative z-10"><div class="w-20 h-20 bg-orange-500" style="clip-path:polygon(50% 20%,70% 48%,98% 18%,82% 68%,100% 90%,62% 78%,50% 92%,38% 78%,0 90%,18% 68%,2% 18%,30% 48%)"></div><div><p class="uppercase tracking-[6px] text-sm text-gray-300">Mouvement Artistique du Québec</p><h1 class="text-5xl md:text-7xl font-black text-orange-500 leading-none mt-2">MEYDEN</h1></div></div><h2 class="text-3xl md:text-5xl font-bold leading-tight max-w-3xl">Structurer naturellement l’impact des artistes et des entreprises.</h2><p class="text-gray-300 text-lg mt-6 max-w-3xl leading-relaxed">Formulaire d’entrée officiel permettant à Meyden de mieux comprendre votre projet, vos objectifs et les besoins stratégiques liés à votre image, votre communication et votre développement.</p><p class="text-orange-400 font-bold mt-5" id="dossierDisplay">Dossier : en attente</p></div>
+<form class="mt-8 space-y-6" id="clientForm">
+<div class="glass rounded-[25px] p-6 md:p-8"><h3 class="text-orange-500 text-xl font-bold uppercase tracking-wider mb-6">Informations générales</h3><div class="grid md:grid-cols-2 gap-5"><div><label class="block mb-2 text-sm text-gray-300">Nom complet</label><input id="nom" type="text" class="w-full rounded-2xl p-4" placeholder="Votre nom" /></div><div><label class="block mb-2 text-sm text-gray-300">Nom du projet / entreprise / artiste</label><input id="projet" type="text" class="w-full rounded-2xl p-4" placeholder="Nom officiel" /></div><div><label class="block mb-2 text-sm text-gray-300">Courriel</label><input id="courriel" type="email" class="w-full rounded-2xl p-4" placeholder="Votre courriel" /></div><div><label class="block mb-2 text-sm text-gray-300">Téléphone</label><input id="telephone" type="text" class="w-full rounded-2xl p-4" placeholder="Votre téléphone" /></div></div></div>
+<div class="glass rounded-[25px] p-6 md:p-8"><h3 class="text-orange-500 text-xl font-bold uppercase tracking-wider mb-6">Votre projet</h3><label class="block mb-2 text-sm text-gray-300">Décrivez votre projet</label><textarea id="description" class="w-full rounded-2xl p-4 min-h-[140px]" placeholder="Parlez-nous de votre vision, votre univers, votre entreprise ou votre démarche artistique..."></textarea><label class="block mt-6 mb-2 text-sm text-gray-300">Quels sont vos objectifs actuels ?</label><textarea id="objectifs" class="w-full rounded-2xl p-4 min-h-[120px]" placeholder="Développement, visibilité, image, contenu, événements, croissance, structuration, etc."></textarea><label class="block mt-6 mb-2 text-sm text-gray-300">Quels sont vos principaux défis ?</label><textarea id="defis" class="w-full rounded-2xl p-4 min-h-[120px]" placeholder="Ce que vous aimeriez améliorer ou clarifier."></textarea></div>
+<div class="glass rounded-[25px] p-6 md:p-8"><h3 class="text-orange-500 text-xl font-bold uppercase tracking-wider mb-6">Image & communication</h3><div class="grid md:grid-cols-2 gap-5"><div><label class="block mb-2 text-sm text-gray-300">Avez-vous une identité visuelle ?</label><select id="identite" class="w-full rounded-2xl p-4"><option>Oui</option><option>Partiellement</option><option>Non</option></select></div><div><label class="block mb-2 text-sm text-gray-300">Avez-vous un site web ?</label><select id="site" class="w-full rounded-2xl p-4"><option>Oui</option><option>Non</option></select></div></div><label class="block mt-6 mb-2 text-sm text-gray-300">Réseaux sociaux / site web</label><textarea id="reseaux" class="w-full rounded-2xl p-4 min-h-[100px]" placeholder="Instagram, Facebook, TikTok, YouTube, site web, etc."></textarea></div>
+<div class="glass rounded-[25px] p-6 md:p-8"><h3 class="text-orange-500 text-xl font-bold uppercase tracking-wider mb-6">Services recherchés</h3><div class="grid md:grid-cols-3 gap-4" id="servicesBox"><label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer"><input type="checkbox" value="Direction artistique" class="service w-5 h-5"><span>Direction artistique</span></label><label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer"><input type="checkbox" value="Image de marque" class="service w-5 h-5"><span>Image de marque</span></label><label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer"><input type="checkbox" value="Stratégie" class="service w-5 h-5"><span>Stratégie</span></label><label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer"><input type="checkbox" value="Accompagnement" class="service w-5 h-5"><span>Accompagnement</span></label><label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer"><input type="checkbox" value="Visibilité" class="service w-5 h-5"><span>Visibilité</span></label><label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer"><input type="checkbox" value="Contenu" class="service w-5 h-5"><span>Contenu</span></label><label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer"><input type="checkbox" value="Événementiel" class="service w-5 h-5"><span>Événementiel</span></label><label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer"><input type="checkbox" value="Structuration" class="service w-5 h-5"><span>Structuration</span></label><label class="checkboxCard glass rounded-2xl p-4 flex items-center gap-3 cursor-pointer"><input type="checkbox" value="Autre" class="service w-5 h-5"><span>Autre</span></label></div></div>
+<div class="glass rounded-[25px] p-6 md:p-8 text-center noPdf"><h3 class="text-2xl font-bold mb-4">Envoyer à Meyden</h3><p class="text-gray-300 max-w-2xl mx-auto leading-relaxed">Votre demande sera convertie en PDF. Un courriel sera préparé avec les informations rédigées dans le message. Vous pourrez ensuite joindre le PDF téléchargé au courriel.</p><div class="flex flex-wrap justify-center gap-4 mt-8"><button type="button" onclick="downloadPDF()" class="bg-orange-500 hover:bg-orange-400 text-black font-black px-8 py-4 rounded-full transition-all">Télécharger PDF</button><button type="button" onclick="prepareEmailWithData()" class="border border-white/20 hover:border-orange-500 hover:bg-orange-500/10 px-8 py-4 rounded-full font-bold transition-all">Préparer courriel</button><button type="button" onclick="downloadAndEmail()" class="bg-white text-black hover:bg-orange-100 px-8 py-4 rounded-full font-black transition-all">PDF + Courriel</button></div><p class="smallNote mt-5">Sécurité navigateur : un site statique GitHub/Vercel ne peut pas attacher automatiquement un PDF dans un courriel sans serveur/API. Cette version génère le PDF, rédige le courriel et ouvre l’envoi vers Meyden. Le fichier doit être joint manuellement. Pour joindre automatiquement, il faudra une API serveur plus tard.</p></div>
+</form><div class="text-center mt-10 text-gray-500 text-sm tracking-[3px] uppercase">MEYDEN — Mouvement Artistique du Québec</div></div>
 <script>
-function generatePDF(){
-alert('Version PDF prête pour intégration jsPDF / export serveur Vercel.');
-}
-
-function sendEmail(){
-window.location.href='mailto:meydenprudhomme95@gmail.com?subject=Demande%20Meyden&body=Bonjour%20Meyden,%0D%0A%0D%0AVoici%20ma%20demande%20d’accompagnement.%0D%0A';
-}
+const MEYDEN_EMAIL='meydenprudhomme95@gmail.com';
+function clean(s){return (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,'').toLowerCase()||'projet'}
+function dossier(){let d=localStorage.getItem('meyden_client_dossier');if(!d){const now=new Date();d=`MEY-${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}-${String(Math.floor(Math.random()*9999)).padStart(4,'0')}`;localStorage.setItem('meyden_client_dossier',d)}document.getElementById('dossierDisplay').innerText='Dossier : '+d;return d}
+function val(id){return document.getElementById(id)?.value?.trim()||''}
+function services(){return [...document.querySelectorAll('.service:checked')].map(x=>x.value).join(', ')||'Non précisé'}
+function emailBody(){return `Bonjour Meyden,\n\nVoici une nouvelle demande d’accompagnement via le formulaire officiel.\n\nDOSSIER : ${dossier()}\n\nINFORMATIONS GÉNÉRALES\nNom : ${val('nom')}\nProjet / artiste / entreprise : ${val('projet')}\nCourriel : ${val('courriel')}\nTéléphone : ${val('telephone')}\n\nPROJET\nDescription :\n${val('description')}\n\nObjectifs :\n${val('objectifs')}\n\nDéfis :\n${val('defis')}\n\nIMAGE & COMMUNICATION\nIdentité visuelle : ${val('identite')}\nSite web : ${val('site')}\nRéseaux / site :\n${val('reseaux')}\n\nSERVICES RECHERCHÉS\n${services()}\n\nUn PDF du formulaire est joint ou sera transmis avec ce message.\n\nMerci,\n${val('nom')}`}
+async function createPdfBlob(){dossier();document.body.classList.add('pdfMode');const area=document.getElementById('pdfZone');const canvas=await html2canvas(area,{scale:2,useCORS:true,backgroundColor:'#050505'});const img=canvas.toDataURL('image/png');const {jsPDF}=window.jspdf;const pdf=new jsPDF('p','mm','a4');const pageW=210,pageH=297;const imgH=canvas.height*pageW/canvas.width;let hLeft=imgH,pos=0;pdf.addImage(img,'PNG',0,pos,pageW,imgH);hLeft-=pageH;while(hLeft>0){pos=hLeft-imgH;pdf.addPage();pdf.addImage(img,'PNG',0,pos,pageW,imgH);hLeft-=pageH}document.body.classList.remove('pdfMode');return pdf.output('blob')}
+async function downloadPDF(){const blob=await createPdfBlob();const filename=`${clean(dossier())}_${clean(val('projet'))}_formulaire-meyden.pdf`;const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;a.click();URL.revokeObjectURL(a.href)}
+function prepareEmailWithData(){const subject=encodeURIComponent(`Demande Meyden — ${dossier()} — ${val('projet')||'Projet'}`);const body=encodeURIComponent(emailBody());window.location.href=`mailto:${MEYDEN_EMAIL}?subject=${subject}&body=${body}`}
+async function downloadAndEmail(){await downloadPDF();setTimeout(prepareEmailWithData,600)}
+window.addEventListener('load',dossier);
 </script>
-
 </body>
 </html>
